@@ -26,7 +26,8 @@
             android:layout_height="wrap_content"
             android:hint="Correo Electrónico"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/nombres"
