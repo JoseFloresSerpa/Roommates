@@ -22,14 +22,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false"/>
+        <activity
             android:name=".RegistroActivity"
             android:exported="false" />
         <activity
             android:name=".ContactActivity"
             android:exported="false" />
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="false"/>
 
         <activity
             android:name=".MainActivity"
