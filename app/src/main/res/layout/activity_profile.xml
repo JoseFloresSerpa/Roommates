@@ -14,6 +14,7 @@
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="109dp"
         android:text="Cambiar contraseña"
+        android:onClick="IrActualizarPass"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
