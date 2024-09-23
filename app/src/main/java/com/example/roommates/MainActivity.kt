@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         buscar()
         val btn_General = findViewById<Button>(R.id.btnGeneral)
         btn_General.setOnClickListener(){
@@ -53,11 +54,7 @@ class MainActivity : AppCompatActivity() {
         val dao = AlquilerDAO(baseContext)
         try {
             resultados = dao.buscar(criterio.text.toString())
-            val encontrados = arrayOfNulls<String>(resultados.size)
-            var i = 0
-            for (gm in resultados) {
-                encontrados[i++] = gm.direccion + " | " + gm.distrito + " | " + gm.descripcion + " | " + gm.disponibilidad + " | " + gm.precio+ " | " + gm.favorito
-            }
+
             alquilerAdapter= AlquilerAdapter(this, resultados)
             val listView=findViewById<ListView>(R.id.listaResultados)
             listView.adapter=alquilerAdapter

@@ -30,7 +30,7 @@ class AlquilerAdapter (val activity: Activity, val list: List<Alquiler>): ArrayA
         direccion.text=list[position].direccion
         distrito.text=list[position].distrito
         descripcion.text=list[position].descripcion
-        disponibilidad.text= list[position].disponibilidad.toString()
+        disponibilidad.text= list[position].disponibilidad.toString() +" disponibles"
         precio.text=list[position].precio
         favorito.text= list[position].favorito.toString()
 
