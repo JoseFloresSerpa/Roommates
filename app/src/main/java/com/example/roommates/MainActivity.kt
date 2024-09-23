@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        iniciar()
         val btn_General = findViewById<Button>(R.id.btnGeneral)
 
         btn_General.setOnClickListener(){
@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun iniciar(){
         val dao = AlquilerDAO(baseContext)
-        dao.insertar("Jr. Andahuaylas 256", "Cercado de Lima - Lima","3 dorm, 2 baños", 2, 0)
-        dao.insertar("Jr. León Velarde 3667", "Lince - Lima","4 dorm, 3 baños", 1, 0)
+        dao.insertar("Jr. Andahuaylas 256", "Cercado de Lima - Lima","3 dorm, 2 baños", 2, "S/.550",0)
+        dao.insertar("Jr. León Velarde 3667", "Lince - Lima","4 dorm, 3 baños", 1, "S/.700",0)
     }
 
     fun buscar() {
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             val encontrados = arrayOfNulls<String>(resultados.size)
             var i = 0
             for (gm in resultados) {
-                encontrados[i++] = gm.direccion + " | " + gm.distrito + " | " + gm.descripcion + " | " + gm.disponibilidad + " | " + gm.favorito
+                encontrados[i++] = gm.direccion + " | " + gm.distrito + " | " + gm.descripcion + " | " + gm.disponibilidad + " | " + gm.precio+ " | " + gm.favorito
             }
             val adaptador = ArrayAdapter(
                 this.baseContext,

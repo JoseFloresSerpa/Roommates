@@ -8,11 +8,11 @@ class DbHelper(myContext: Context): SQLiteOpenHelper(myContext,DATABASE_NAME,nul
 
     companion object {
         private const val DATABASE_NAME = "roommates.db"
-        private const val DATABASE_VERSION = 3
+        private const val DATABASE_VERSION = 4
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        val sql = "CREATE TABLE IF NOT EXISTS alquiler (id INTEGER PRIMARY KEY AUTOINCREMENT, direccion TEXT NOT NULL, distrito TEXT NOT NULL,descripcion TEXT NOT NULL, disponibilidad INTEGER NOT NULL, favorito INTEGER NOT NULL)"
+        val sql = "CREATE TABLE IF NOT EXISTS alquiler (id INTEGER PRIMARY KEY AUTOINCREMENT, direccion TEXT NOT NULL, distrito TEXT NOT NULL,descripcion TEXT NOT NULL, disponibilidad INTEGER NOT NULL,precio TEXT NOT NULL, favorito INTEGER NOT NULL)"
         db.execSQL(sql)
 
     }
