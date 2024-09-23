@@ -15,17 +15,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.roommates.DAO.AlquilerDAO
 import com.example.roommates.DAO.DAOException
 import com.example.roommates.Model.Alquiler
+import com.example.roommates.Model.AlquilerAdapter
 import com.example.roommates.Model.Tools
 
 class MainActivity : AppCompatActivity() {
-    lateinit var resultados : ArrayList<Alquiler>
-    lateinit var listaResultados : ListView
+    lateinit var resultados : List<Alquiler>
+    lateinit var alquilerAdapter : AlquilerAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +35,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        iniciar()
+        buscar()
         val btn_General = findViewById<Button>(R.id.btnGeneral)
-
         btn_General.setOnClickListener(){
             buscar()
         }
@@ -60,14 +58,10 @@ class MainActivity : AppCompatActivity() {
             for (gm in resultados) {
                 encontrados[i++] = gm.direccion + " | " + gm.distrito + " | " + gm.descripcion + " | " + gm.disponibilidad + " | " + gm.precio+ " | " + gm.favorito
             }
-            val adaptador = ArrayAdapter(
-                this.baseContext,
-                android.R.layout.simple_list_item_1,
-                encontrados
-            )
-            listaResultados = findViewById(R.id.listaResultados)
-            listaResultados.setAdapter(adaptador)
-            registerForContextMenu(listaResultados)
+            alquilerAdapter= AlquilerAdapter(this, resultados)
+            val listView=findViewById<ListView>(R.id.listaResultados)
+            listView.adapter=alquilerAdapter
+
         } catch (e: DAOException) {
             Log.i(Tools.LOGTAG, "MainActivity ==> " + e.message)
         }
