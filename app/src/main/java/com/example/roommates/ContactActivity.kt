@@ -1,9 +1,11 @@
 package com.example.roommates
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 
 
 class ContactActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -21,6 +24,14 @@ class ContactActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val correoContacto = intent.getStringExtra("correoContacto")
+        val telefonoContacto = intent.getStringExtra("telefonoContacto")
+
+        val correoContactoText = findViewById<TextView>(R.id.correoContacto)
+        val telefonoContactoText = findViewById<TextView>(R.id.telefonoContacto)
+
+        correoContactoText.text = correoContacto
+        telefonoContactoText.text = telefonoContacto
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.superior, menu)

@@ -15,6 +15,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.squareup.picasso.Picasso
 
 class DetalleActivity : AppCompatActivity() {
+    lateinit var correoContacto : String
+    lateinit var telefonoContacto: String
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +37,8 @@ class DetalleActivity : AppCompatActivity() {
         val favorito = intent.getIntExtra("favorito", 0)
         val imagen = intent.getStringExtra("imagen")
         val descripcionDetallada = intent.getStringExtra("descripcionDetallada")
-        val correoContacto = intent.getStringExtra("correoContacto")
-        val telefonoContacto = intent.getStringExtra("telefonoContacto")
+        correoContacto = intent.getStringExtra("correoContacto").toString()
+        telefonoContacto = intent.getStringExtra("telefonoContacto").toString()
 
 
 
@@ -61,6 +63,7 @@ class DetalleActivity : AppCompatActivity() {
         imagen?.let { Picasso.get().load(it).into(imagenImage)}
 
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.superior, menu)
@@ -89,7 +92,11 @@ class DetalleActivity : AppCompatActivity() {
     }
 
     fun IrContactar(view: View){
-        val intent = Intent(this,ContactActivity::class.java)
+
+        val intent = Intent(this, ContactActivity::class.java).apply {
+            putExtra("correoContacto", correoContacto)
+            putExtra("telefonoContacto", telefonoContacto)
+        }
         startActivity(intent)
     }
 
