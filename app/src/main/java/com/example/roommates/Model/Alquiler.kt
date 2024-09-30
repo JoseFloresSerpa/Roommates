@@ -8,5 +8,6 @@ class Alquiler {
     var disponibilidad:Int=0
     lateinit var precio:String
     var favorito:Int=0
+    lateinit var imagen:String
 
 }

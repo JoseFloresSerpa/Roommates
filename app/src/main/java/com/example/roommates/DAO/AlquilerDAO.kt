@@ -11,7 +11,7 @@ import com.example.roommates.Model.Tools
 class AlquilerDAO (myContext: Context)  {
     private var dbHelper: DbHelper = DbHelper(myContext)
 
-    fun insertar(direccion: String, distrito: String, descripcion:String, disponibilidad:Int, precio:String, favorito:Int): Long {
+    fun insertar(direccion: String, distrito: String, descripcion:String, disponibilidad:Int, precio:String, favorito:Int, imagen:String): Long {
         Log.i(Tools.LOGTAG, "Ingresó al método insertar()")
         val indice: Long
         val values = ContentValues().apply {
@@ -21,6 +21,7 @@ class AlquilerDAO (myContext: Context)  {
             put("disponibilidad", disponibilidad)
             put("precio", precio)
             put("favorito", favorito)
+            put("imagen",imagen)
         }
         val db = dbHelper.writableDatabase
         try {
@@ -39,7 +40,7 @@ class AlquilerDAO (myContext: Context)  {
         val db = dbHelper.readableDatabase
         val modelo = Alquiler()
         try {
-            val c: Cursor = db.rawQuery("select id, direccion, distrito, descripcion, disponibilidad, precio ,favorito from " + Tools.MITABLA, null)
+            val c: Cursor = db.rawQuery("select id, direccion, distrito, descripcion, disponibilidad, precio ,favorito, imagen from " + Tools.MITABLA, null)
             if (c.count > 0) {
                 c.moveToFirst()
                 do {
@@ -50,6 +51,7 @@ class AlquilerDAO (myContext: Context)  {
                     val disponibilidad: Int = c.getInt(c.getColumnIndex("disponibilidad"))
                     val precio: String = c.getString(c.getColumnIndex("precio"))
                     val favorito: Int = c.getInt(c.getColumnIndex("favorito"))
+                    val imagen: String = c.getString(c.getColumnIndex("imagen"))
                     modelo.id = id
                     modelo.direccion = direccion
                     modelo.distrito = distrito
@@ -57,6 +59,7 @@ class AlquilerDAO (myContext: Context)  {
                     modelo.disponibilidad = disponibilidad
                     modelo.precio = precio
                     modelo.favorito = favorito
+                    modelo.imagen = imagen
                 } while (c.moveToNext())
             }
             c.close()
@@ -75,7 +78,7 @@ class AlquilerDAO (myContext: Context)  {
         val lista = ArrayList<Alquiler>()
         try {
             val c: Cursor = db.rawQuery(
-                "select id, direccion, distrito,descripcion, disponibilidad,precio, favorito from " + Tools.MITABLA + " where direccion like '%$criterio%' or descripcion like '%$criterio%'",
+                "select id, direccion, distrito,descripcion, disponibilidad,precio, favorito, imagen from " + Tools.MITABLA + " where direccion like '%$criterio%' or descripcion like '%$criterio%'",
                 null
             )
             if (c.count > 0) {
@@ -88,6 +91,7 @@ class AlquilerDAO (myContext: Context)  {
                     val disponibilidad: Int = c.getInt(c.getColumnIndex("disponibilidad"))
                     val precio: String = c.getString(c.getColumnIndex("precio"))
                     val favorito: Int = c.getInt(c.getColumnIndex("favorito"))
+                    val imagen: String = c.getString(c.getColumnIndex("imagen"))
                     val modelo = Alquiler()
                     modelo.id = id
                     modelo.direccion = direccion
@@ -96,6 +100,7 @@ class AlquilerDAO (myContext: Context)  {
                     modelo.disponibilidad = disponibilidad
                     modelo.precio = precio
                     modelo.favorito = favorito
+                    modelo.imagen = imagen
                     lista.add(modelo)
                 } while (c.moveToNext())
             }

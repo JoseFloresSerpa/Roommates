@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var resultados : List<Alquiler>
     lateinit var alquilerAdapter : AlquilerAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -41,12 +40,7 @@ class MainActivity : AppCompatActivity() {
         btn_General.setOnClickListener(){
             buscar()
         }
-    }
 
-    private fun iniciar(){
-        val dao = AlquilerDAO(baseContext)
-        dao.insertar("Jr. Andahuaylas 256", "Cercado de Lima - Lima","3 dorm, 2 baños", 2, "S/.550",0)
-        dao.insertar("Jr. León Velarde 3667", "Lince - Lima","4 dorm, 3 baños", 1, "S/.700",0)
     }
 
     fun buscar() {
@@ -59,10 +53,29 @@ class MainActivity : AppCompatActivity() {
             val listView=findViewById<ListView>(R.id.listaResultados)
             listView.adapter=alquilerAdapter
 
+            listView.setOnItemClickListener { _, _, position, _ ->
+                val alquiler = resultados[position]
+
+
+                val intent = Intent(this, DetalleActivity::class.java).apply {
+                    putExtra("direccion", alquiler.direccion)
+                    putExtra("distrito", alquiler.distrito)
+                    putExtra("descripcion", alquiler.descripcion)
+                    putExtra("disponibilidad", alquiler.disponibilidad)
+                    putExtra("precio", alquiler.precio)
+                    putExtra("favorito", alquiler.favorito)
+                    putExtra("imagen", alquiler.imagen)
+                }
+
+                startActivity(intent)
+            }
+
+
         } catch (e: DAOException) {
             Log.i(Tools.LOGTAG, "MainActivity ==> " + e.message)
         }
     }
+
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
