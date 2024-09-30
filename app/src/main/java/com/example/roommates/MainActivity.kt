@@ -65,6 +65,9 @@ class MainActivity : AppCompatActivity() {
                     putExtra("precio", alquiler.precio)
                     putExtra("favorito", alquiler.favorito)
                     putExtra("imagen", alquiler.imagen)
+                    putExtra("descripcionDetallada", alquiler.descripcionDetallada)
+                    putExtra("correoContacto", alquiler.correoContacto)
+                    putExtra("telefonoContacto", alquiler.telefonoContacto)
                 }
 
                 startActivity(intent)

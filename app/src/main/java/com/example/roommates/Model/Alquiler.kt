@@ -9,5 +9,8 @@ class Alquiler {
     lateinit var precio:String
     var favorito:Int=0
     lateinit var imagen:String
+    lateinit var descripcionDetallada:String
+    lateinit var correoContacto:String
+    lateinit var telefonoContacto:String
 
 }

@@ -1,5 +1,6 @@
 package com.example.roommates
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.squareup.picasso.Picasso
 
 class DetalleActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,6 +34,10 @@ class DetalleActivity : AppCompatActivity() {
         val precio = intent.getStringExtra("precio")
         val favorito = intent.getIntExtra("favorito", 0)
         val imagen = intent.getStringExtra("imagen")
+        val descripcionDetallada = intent.getStringExtra("descripcionDetallada")
+        val correoContacto = intent.getStringExtra("correoContacto")
+        val telefonoContacto = intent.getStringExtra("telefonoContacto")
+
 
 
         val direccionText = findViewById<TextView>(R.id.direccion)
@@ -41,6 +47,8 @@ class DetalleActivity : AppCompatActivity() {
         val precioText = findViewById<TextView>(R.id.precio)
         val favoritoText = findViewById<TextView>(R.id.favorito)
         val imagenImage = findViewById<ImageView>(R.id.imagen)
+        val descripcionDetalladaText = findViewById<TextView>(R.id.descripcionDetallada)
+
 
         direccionText.text = direccion
         distritoText.text = distrito
@@ -48,6 +56,7 @@ class DetalleActivity : AppCompatActivity() {
         disponibilidadText.text = "$disponibilidad disponibles"
         precioText.text = precio
         favoritoText.text = "$favorito"
+        descripcionDetalladaText.text = descripcionDetallada
 
         imagen?.let { Picasso.get().load(it).into(imagenImage)}
 
