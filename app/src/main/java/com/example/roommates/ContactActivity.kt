@@ -1,5 +1,6 @@
 package com.example.roommates
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -21,23 +22,29 @@ class ContactActivity : AppCompatActivity() {
             insets
         }
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.superior, menu)
-        return true
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+        when(item.itemId){
             R.id.menu_sup_perfil -> {
-                Toast.makeText(this, "Perfil seleccionado", Toast.LENGTH_SHORT).show()
-                true
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                return true
             }
             R.id.menu_sup_logout -> {
-                Toast.makeText(this, "Cerrar sesión seleccionado", Toast.LENGTH_SHORT).show()
-                true
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+                return true
             }
-            else -> super.onOptionsItemSelected(item)
+            R.id.menu_sup_main -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                return true
+            }
         }
+        return super.onOptionsItemSelected(item)
     }
 }
