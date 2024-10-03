@@ -41,6 +41,11 @@ class MainActivity : AppCompatActivity() {
             buscar()
         }
 
+        val btn_Favorito = findViewById<Button>(R.id.btnFavorito)
+        btn_Favorito.setOnClickListener(){
+            buscarFavoritos()
+        }
+
     }
 
     fun buscar() {
@@ -48,6 +53,41 @@ class MainActivity : AppCompatActivity() {
         val dao = AlquilerDAO(baseContext)
         try {
             resultados = dao.buscar(criterio.text.toString())
+
+            alquilerAdapter= AlquilerAdapter(this, resultados)
+            val listView=findViewById<ListView>(R.id.listaResultados)
+            listView.adapter=alquilerAdapter
+
+            listView.setOnItemClickListener { _, _, position, _ ->
+                val alquiler = resultados[position]
+
+
+                val intent = Intent(this, DetalleActivity::class.java).apply {
+                    putExtra("direccion", alquiler.direccion)
+                    putExtra("distrito", alquiler.distrito)
+                    putExtra("descripcion", alquiler.descripcion)
+                    putExtra("disponibilidad", alquiler.disponibilidad)
+                    putExtra("precio", alquiler.precio)
+                    putExtra("favorito", alquiler.favorito)
+                    putExtra("imagen", alquiler.imagen)
+                    putExtra("descripcionDetallada", alquiler.descripcionDetallada)
+                    putExtra("correoContacto", alquiler.correoContacto)
+                    putExtra("telefonoContacto", alquiler.telefonoContacto)
+                }
+
+                startActivity(intent)
+            }
+
+
+        } catch (e: DAOException) {
+            Log.i(Tools.LOGTAG, "MainActivity ==> " + e.message)
+        }
+    }
+
+    fun buscarFavoritos() {
+        val dao = AlquilerDAO(baseContext)
+        try {
+            resultados = dao.buscarFavorito()
 
             alquilerAdapter= AlquilerAdapter(this, resultados)
             val listView=findViewById<ListView>(R.id.listaResultados)

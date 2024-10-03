@@ -130,6 +130,54 @@ class AlquilerDAO (myContext: Context)  {
         return lista
     }
 
+    @SuppressLint("Range")
+    fun buscarFavorito(): ArrayList<Alquiler> {
+        Log.i(Tools.LOGTAG, "Ingresó al método buscar()")
+        val db = dbHelper.readableDatabase
+        val lista = ArrayList<Alquiler>()
+        try {
+            val c: Cursor = db.rawQuery(
+                "select id, direccion, distrito,descripcion, disponibilidad,precio, favorito, imagen, descripcionDetallada, correoContacto, telefonoContacto from " + Tools.MITABLA + " where favorito like '%1%'",
+                null
+            )
+            if (c.count > 0) {
+                c.moveToFirst()
+                do {
+                    val id: Int = c.getInt(c.getColumnIndex("id"))
+                    val direccion: String = c.getString(c.getColumnIndex("direccion"))
+                    val distrito: String = c.getString(c.getColumnIndex("distrito"))
+                    val descripcion: String = c.getString(c.getColumnIndex("descripcion"))
+                    val disponibilidad: Int = c.getInt(c.getColumnIndex("disponibilidad"))
+                    val precio: String = c.getString(c.getColumnIndex("precio"))
+                    val favorito: Int = c.getInt(c.getColumnIndex("favorito"))
+                    val imagen: String = c.getString(c.getColumnIndex("imagen"))
+                    val descripcionDetallada: String = c.getString(c.getColumnIndex("descripcionDetallada"))
+                    val correoContacto: String = c.getString(c.getColumnIndex("correoContacto"))
+                    val telefonoContacto: String = c.getString(c.getColumnIndex("telefonoContacto"))
+                    val modelo = Alquiler()
+                    modelo.id = id
+                    modelo.direccion = direccion
+                    modelo.distrito = distrito
+                    modelo.descripcion = descripcion
+                    modelo.disponibilidad = disponibilidad
+                    modelo.precio = precio
+                    modelo.favorito = favorito
+                    modelo.imagen = imagen
+                    modelo.descripcionDetallada = descripcionDetallada
+                    modelo.correoContacto = correoContacto
+                    modelo.telefonoContacto = telefonoContacto
+                    lista.add(modelo)
+                } while (c.moveToNext())
+            }
+            c.close()
+        } catch (e: Exception) {
+            throw DAOException("AlquilerDAO: Error al obtener: " + e.message)
+        } finally {
+            db.close()
+        }
+        return lista
+    }
+
     fun eliminar(id: Int) {
         Log.i(Tools.LOGTAG, "Ingresó al método eliminar()")
         val db = dbHelper.writableDatabase
