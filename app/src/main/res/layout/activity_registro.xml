@@ -7,130 +7,106 @@
     android:layout_height="match_parent"
     tools:context=".RegistroActivity">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="23dp"
-        android:text="Registrar en el Aplicativo"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText8"
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="407dp"
+        android:layout_height="617dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/editTextText8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginBottom="29dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Correo Electronico"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/editTextText9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="27dp"
-        android:ems="10"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:hint="Nombres"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText8"
-        tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/correoElectronico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginBottom="29dp"
+            android:ems="10"
+            android:hint="Correo Electronico"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/editTextText10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginBottom="39dp"
-        android:ems="10"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:hint="Apellidos"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText9"
-        tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/nombres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="27dp"
+            android:ems="10"
+            android:hint="Nombres"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/editTextText11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginBottom="37dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Telefono"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText10"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        <EditText
+            android:id="@+id/apellidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginBottom="39dp"
+            android:ems="10"
+            android:hint="Apellidos"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/editTextText12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="37dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Contraseña"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText11"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        <EditText
+            android:id="@+id/telefonoUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="31dp"
+            android:layout_marginBottom="37dp"
+            android:ems="10"
+            android:hint="Telefono"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-    <EditText
-        android:id="@+id/editTextText13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="44dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Confirmar Contraseña"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText12"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        <EditText
+            android:id="@+id/contrasenaUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginBottom="37dp"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
+
+        <EditText
+            android:id="@+id/contrasenaConfirmar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginBottom="44dp"
+            android:ems="10"
+            android:hint="Confirmar Contraseña"
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="Registrar" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="310dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="36dp"
-        android:text="Registrar"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toEndOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText13"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnCancelar"
         android:layout_width="312dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="28dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="30dp"
         android:onClick="IrLogin"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.606"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
