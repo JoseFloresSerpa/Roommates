@@ -29,7 +29,7 @@ class AlquilerAdapter (val activity: Activity, val list: List<Alquiler>): ArrayA
         val descripcion= rowView.findViewById<TextView>(R.id.descripcion)
         val disponibilidad = rowView.findViewById<TextView>(R.id.disponibilidad)
         val precio = rowView.findViewById<TextView>(R.id.precio)
-        val favorito = rowView.findViewById<TextView>(R.id.favorito)
+        val favorito = rowView.findViewById<ImageView>(R.id.favorito)
 
 
         Picasso.get().load(list[position].imagen).into(imagen)
@@ -38,7 +38,11 @@ class AlquilerAdapter (val activity: Activity, val list: List<Alquiler>): ArrayA
         descripcion.text=list[position].descripcion
         disponibilidad.text= list[position].disponibilidad.toString() +" disponibles"
         precio.text=list[position].precio
-        favorito.text= list[position].favorito.toString()
+        if (list[position].favorito == 1) {
+            favorito.setImageResource(R.drawable.favorite_1)
+        } else {
+            favorito.setImageResource(R.drawable.favorite_0)
+        }
 
         return rowView
     }
