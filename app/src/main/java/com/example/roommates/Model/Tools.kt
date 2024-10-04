@@ -3,6 +3,7 @@ package com.example.roommates.Model
 class Tools {
     companion object {
         const val LOGTAG = "Roommates"
-        const val MITABLA = "alquiler"
+        const val MITABLALQUILER = "alquiler"
+        const val MITABLAUSUARIO = "usuario"
     }
 }

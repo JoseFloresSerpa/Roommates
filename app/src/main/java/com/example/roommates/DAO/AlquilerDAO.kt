@@ -29,7 +29,7 @@ class AlquilerDAO (myContext: Context)  {
         }
         val db = dbHelper.writableDatabase
         try {
-            indice = db.insert(Tools.MITABLA,null, values)
+            indice = db.insert(Tools.MITABLALQUILER,null, values)
             return indice
         } catch (e: Exception) {
             throw DAOException("AlquilerDAO: Error al insertar: " + e.message)
@@ -44,7 +44,7 @@ class AlquilerDAO (myContext: Context)  {
         val db = dbHelper.readableDatabase
         val modelo = Alquiler()
         try {
-            val c: Cursor = db.rawQuery("select id, direccion, distrito, descripcion, disponibilidad, precio ,favorito, imagen, descripcionDetallada, correoContacto, telefonoContacto from " + Tools.MITABLA, null)
+            val c: Cursor = db.rawQuery("select id, direccion, distrito, descripcion, disponibilidad, precio ,favorito, imagen, descripcionDetallada, correoContacto, telefonoContacto from " + Tools.MITABLALQUILER, null)
             if (c.count > 0) {
                 c.moveToFirst()
                 do {
@@ -89,7 +89,7 @@ class AlquilerDAO (myContext: Context)  {
         val lista = ArrayList<Alquiler>()
         try {
             val c: Cursor = db.rawQuery(
-                "select id, direccion, distrito,descripcion, disponibilidad,precio, favorito, imagen, descripcionDetallada, correoContacto, telefonoContacto from " + Tools.MITABLA + " where direccion like '%$criterio%' or descripcion like '%$criterio%'",
+                "select id, direccion, distrito,descripcion, disponibilidad,precio, favorito, imagen, descripcionDetallada, correoContacto, telefonoContacto from " + Tools.MITABLALQUILER + " where direccion like '%$criterio%' or descripcion like '%$criterio%'",
                 null
             )
             if (c.count > 0) {
@@ -137,7 +137,7 @@ class AlquilerDAO (myContext: Context)  {
         val lista = ArrayList<Alquiler>()
         try {
             val c: Cursor = db.rawQuery(
-                "select id, direccion, distrito,descripcion, disponibilidad,precio, favorito, imagen, descripcionDetallada, correoContacto, telefonoContacto from " + Tools.MITABLA + " where favorito like '%1%'",
+                "select id, direccion, distrito,descripcion, disponibilidad,precio, favorito, imagen, descripcionDetallada, correoContacto, telefonoContacto from " + Tools.MITABLALQUILER + " where favorito like '%1%'",
                 null
             )
             if (c.count > 0) {
@@ -183,7 +183,7 @@ class AlquilerDAO (myContext: Context)  {
         val db = dbHelper.writableDatabase
         try {
             val args = arrayOf(id.toString())
-            db.execSQL("DELETE FROM " + Tools.MITABLA + " WHERE id=?", args)
+            db.execSQL("DELETE FROM " + Tools.MITABLALQUILER + " WHERE id=?", args)
         } catch (e: Exception) {
             throw DAOException("AlquilerDAO: Error al eliminar: " + e.message)
         } finally {
@@ -195,7 +195,7 @@ class AlquilerDAO (myContext: Context)  {
         Log.i(Tools.LOGTAG, "Ingresó al método eliminarTodos()")
         val db = dbHelper.writableDatabase
         try {
-            db.execSQL("DELETE FROM " + Tools.MITABLA)
+            db.execSQL("DELETE FROM " + Tools.MITABLALQUILER)
         } catch (e: Exception) {
             throw DAOException("AlquilerDAO: Error al eliminar todos: " + e.message)
         } finally {

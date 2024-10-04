@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.roommates.DAO.AlquilerDAO
+import com.example.roommates.DAO.UsuarioDAO
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,10 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
         eliminartodo()
+        eliminartodoUsuario()
         iniciar()
+        iniciarUsuario()
+
 
     }
 
@@ -39,6 +43,17 @@ class HomeActivity : AppCompatActivity() {
         dao.insertar("Los Claveles 1124", "El Agustino - Lima","4 dorm, 3 baños", 3, "S/.600",0,"https://i.postimg.cc/Przvjvn8/6.png","4to piso","ptubino@gmail.com","+51 934131357")
         dao.insertar("Av. de los Patriotas 6145", "San Miguel - Lima","2 dorm, 2 baños", 1, "S/.800",1,"https://i.postimg.cc/GmXBB02L/7.png","Cuenta con ascensor","tzapata@gmail.com","+51 964683468")
         dao.insertar("Av. San Juan 4131", "La Victoria - Lima","2 dorm, 1 baño", 1, "S/.550",0,"https://i.postimg.cc/Mp6MKZz3/8.png","Cerca de centro comercial","cpitana@gmail.com","+51 9456879714")
+    }
+
+    private fun iniciarUsuario(){
+        val dao = UsuarioDAO(baseContext)
+        dao.insertar("jvelarde@gmail.com", "Julio","Velarde", "+51997742435", "1234","")
+
+    }
+
+    private fun eliminartodoUsuario(){
+        val dao = UsuarioDAO(baseContext)
+        dao.eliminarTodos()
     }
 
     private fun eliminartodo(){
